@@ -3,8 +3,13 @@ import logo from '../../assets/logo.svg';
 import styles from './Header.module.css';
 import { Layout, Typography, Dropdown, Button, Menu, Input } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
+import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 
 export const Header: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const match = useRouteMatch();
   return (
     <div className={styles["app-header"]}>
         <div className={styles["top-header"]}>
@@ -23,8 +28,8 @@ export const Header: React.FC = () => {
               语言
             </Dropdown.Button>
             <Button.Group className={styles["button-group"]}>
-              <Button>注册</Button>
-              <Button>登陆</Button>
+              <Button onClick={() => history.push("/register")}>注册</Button>
+              <Button onClick={() => {history.push("/siginIn")}}>登陆</Button>
             </Button.Group>
           </div>
         </div>
